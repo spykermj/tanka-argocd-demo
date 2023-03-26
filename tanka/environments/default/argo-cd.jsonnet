@@ -35,9 +35,6 @@
                   },
                 },
                 repoServer: {
-                  clusterAdminAccess: {
-                    enabled: true,
-                  },
                   extraContainers: [
                     {
                       name: 'cmp',
