@@ -10,12 +10,12 @@
       kind: 'Application',
       metadata: {
         name: 'argo-cd',
-        namespace: 'default',
+        namespace: 'argocd',
       },
       spec: {
         project: 'default',
         destination: {
-          namespace: 'default',
+          namespace: 'argocd',
           server: 'https://kubernetes.default.svc',
         },
         source: {
@@ -95,7 +95,7 @@
     kind: 'ConfigMap',
     metadata: {
       name: 'cmp-plugin',
-      namespace: 'default',
+      namespace: 'argocd',
     },
     data: {
       'plugin.yaml': |||
@@ -105,7 +105,7 @@
         kind: 'ConfigManagementPlugin',
         metadata: {
           name: 'tanka',
-          namespace: 'default',
+          namespace: 'argocd',
         },
         spec: {
           version: tankaVersion,
@@ -169,7 +169,7 @@
     kind: 'AppProject',
     metadata: {
       name: 'default',
-      namespace: 'default',
+      namespace: 'argocd',
       finalizers: [
         'resources-finalizer.argocd.argoproj.io',
       ],
