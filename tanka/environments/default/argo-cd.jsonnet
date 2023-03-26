@@ -22,6 +22,9 @@
           server: 'https://kubernetes.default.svc',
         },
         source: {
+          chart: 'argo-cd',
+          repoURL: 'https://argoproj.github.io/argo-helm',
+          targetRevision: '5.20.0',
           helm: {
             releaseName: 'argo-cd',
             values: |||
