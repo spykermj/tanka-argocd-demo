@@ -15,7 +15,7 @@
       spec: {
         chart: 'argo-cd',
         repoURL: 'https://argoproj.github.io/argo-helm',
-        targetRevision: '5.20.0',
+        targetRevision: '5.27.3',
         project: 'default',
         destination: {
           namespace: 'default',
@@ -143,9 +143,9 @@
     spec: {
       project: 'default',
       source: {
-        repoURL: 'https://github.com/adinhodovic/tanka-argocd-demo',
+        repoURL: 'https://github.com/spykermj/tanka-argocd-demo',
         path: 'tanka',
-        targetRevision: 'HEAD',
+        targetRevision: 'js_use_tanka_image',
         plugin: {
           env: [
             {
