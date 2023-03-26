@@ -143,9 +143,9 @@
     spec: {
       project: 'default',
       source: {
-        repoURL: 'https://github.com/adinhodovic/tanka-argocd-demo',
+        repoURL: 'https://github.com/spykermj/tanka-argocd-demo',
         path: 'tanka',
-        targetRevision: 'HEAD',
+        targetRevision: 'change_to_fork',
         plugin: {
           env: [
             {
