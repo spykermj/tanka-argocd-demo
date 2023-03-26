@@ -37,7 +37,7 @@
                 repoServer: {
                   extraContainers: [
                     {
-                      name: 'cmp',
+                      name: 'tanka',
                       image: 'grafana/tanka:%s' % tankaVersion,
 
                       command: [
