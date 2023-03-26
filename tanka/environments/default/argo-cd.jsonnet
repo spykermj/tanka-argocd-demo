@@ -1,6 +1,6 @@
 {
   // Plugin specific configs
-  local tankaVersion = 'v0.20.0',
+  local tankaVersion = '0.24.0',
   local jsonnetBundlerVersion = 'v0.5.1',
   local pluginDir = '/home/argocd/cmp-server/plugins',
 
@@ -41,15 +41,12 @@
                   extraContainers: [
                     {
                       name: 'cmp',
-                      image: 'curlimages/curl',
+                      image: 'grafana/tanka:%s' % tankaVersion,
 
-                      local jsonnetBundlerCurlCommand = 'curl -Lo %s/jb https://github.com/jsonnet-bundler/jsonnet-bundler/releases/download/%s/jb-linux-amd64' % [pluginDir, jsonnetBundlerVersion],
-                      local tankaCurlCommand = 'curl -Lo %s/tk https://github.com/grafana/tanka/releases/download/%s/tk-linux-amd64' % [pluginDir, tankaVersion],
-                      local chmodCommands = 'chmod +x %s/jb && chmod +x %s/tk' % [pluginDir, pluginDir],
                       command: [
                         'sh',
                         '-c',
-                        '%s && %s && %s && /var/run/argocd/argocd-cmp-server' % [jsonnetBundlerCurlCommand, tankaCurlCommand, chmodCommands],
+                        '/var/run/argocd/argocd-cmp-server',
                       ],
                       securityContext: {
                         runAsNonRoot: true,
@@ -116,14 +113,14 @@
             command: [
               'sh',
               '-c',
-              '%s/jb install' % pluginDir,
+              'jb install',
             ],
           },
           generate: {
             command: [
               'sh',
               '-c',
-              '%s/tk show environments/${ARGOCD_ENV_TK_ENV} --dangerous-allow-redirect' % pluginDir,
+              'tk show environments/${ARGOCD_ENV_TK_ENV} --dangerous-allow-redirect',
             ],
           },
           discover: {
